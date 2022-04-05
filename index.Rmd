@@ -1,32 +1,20 @@
 ---
-title: "What typifies Kizomba music?"
-output: github_document
----
+title: 'What typifies Kizomba music?'
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+    theme: yeti
+    orientation: columns
+    vertical_layout: fill
+    self_contained: false˚
+
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
-## GitHub Documents
-
-Differences in Scale, Valence, Energy and Loudness in 2022 tophits lists of Pop, Bachata and Kizomba
-
-
-
-
-
-
-## Differences in Scale, Valence, Energy and Loudness in 2022 tophits lists of Pop, Bachata and Kizomba
-
-You can include R code in the document as follows:
-
-```{r cars}
-
-
-install.packages(devtools)
+library('ggplot2')
+library('plotly')
 library(usethis)
 library(devtools)
-devtools::intstall_github('charlie86/spotifyr')
 library(spotifyr)
 library(tidyverse)
 library(knitr)
@@ -36,81 +24,32 @@ Sys.setenv(SPOTIFY_CLIENT_SECRET = 'a7ecccc3b9d846f28d1636eacdbc94e2')
 
 acces_token <- get_spotify_access_token()
 
-kizombatophits <- get_playlist_audio_features("", "09gysnJpfQ3ublBmJDfcEC?si=5ea5c640ed424139")
-library(knitr)
-kizombatophits %>%
-  count(key_mode, sort = TRUE) %>%
-  head(20) %>% 
-  kable()
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+### What typifies Kizomba music?
+
+In this research will be given a frame to this new type of music called 'Kizomba'. It was created in the 70s/80s and means 'party' in Angolan. In this project is researched what is specific about kizomba music. We will use three recent made playlists of Kizomba, Bachata and Pop. All have been created and updated in the last two weeks. We will compare and look at the energylevels, modes, loudness and valence. 
+
+Then we will look at three popular songs in more detail. Two versions of 'Sad Girlz Luv Money', the orginal and the kizomba remix version, and love nwantiti for CKay. 
+
+For Sad Girlz Luv Money we will compare the original version and the kizomba version with chromagrams. In a chromagram is visualized what notes are used at what time. Here we can see what notes are used and if there is a difference between the original and the kizomba version. The self similairy matrix with chromafeatures will also give some insight about how consistant or contrastfull the song is. 
+
+With 'love nwantiti' we will look at the self-similarity matrix for chroma features, timbre features
 
 
-library(ggjoy)
-ggplot(kizombatophits, aes(x=valence, y=song_name))+
-  geom_joy()+
-  theme_joy()
-
-
-library(ggjoy)
 
 
 
-kizombaparty <- get_track_audio_features(c("09gysnJpfQ3ublBmJDfcEC?si=5ea5c640ed424139"))
-originalparty <- get_track_audio_features(c("2pgDBO0ZAgvye7joSmdDm8?si=2552a28412744719"))
-kizombatophits <- get_playlist_audio_features("", "0Pk8kSKJ5vO5yIA36kzGMu?si=799fc3e1c4df4215")
+### Differences in Scale, Valence, Energy and Loudness in 2022 tophits lists of Pop, Bachata and Kizomba
 
-library(ggjoy)
-ggplot(kizombatophits, aes(x=valence, y=track_name))+
-  geom_joy()+
-  theme_joy()
+```{r = energy count 3 playlists}
 
-kizombatophits %>%
-  summarise(
-    mean_speechiness = mean(speechiness),
-    mean_acousticness = mean(acousticness),
-    mean_liveness = mean(liveness),
-    sd_speechiness = sd(speechiness),
-    sd_acousticness = sd(acousticness),
-    sd_liveness = sd(liveness),
-    median_speechiness = median(speechiness),
-    median_acousticness = median(acousticness),
-    median_liveness = median(liveness),
-    mad_speechiness = mad(speechiness),
-    mad_acousticness = mad(acousticness),
-    mad_liveness = mad(liveness)
-  )
-
-remotes::install_github('jaburgoyne/compmus')
-
-kizombatophits <-
-  get_tidy_audio_analysis("0e8nrvls4Qqv5Rfa2UhqmO") %>%
-  select(segments) %>%
-  unnest(segments) %>%
-  select(start, duration, pitches)
-
-
-kizombatophits %>%
-  mutate(pitches = map(pitches, compmus_normalise, "euclidean")) %>%
-  compmus_gather_chroma() %>% 
-  ggplot(
-    aes(
-      x = start + duration / 2,
-      width = duration,
-      y = pitch_class,
-      fill = value
-    )
-  ) +
-  geom_tile() +
-  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
-  theme_minimal() +
-  scale_fill_viridis_c()
-
-kizombatophits %>%
-  arrange(-valence) %>%
-  select(track_name, valence) %>%
-  head(80) %>%
-  kable()
-
-kizombatophits <- get_playlist_audio_features("", "0Pk8kSKJ5vO5yIA36kzGMu?si=799fc3e1c4df4215")
+kizombatophits <- get_playlist_audio_features("", "0Pk8kSKJ5vO5yIA36kzGMu?si=e846b8a12e834aea")
 bachatatophits <- get_playlist_audio_features("", "3mmU6TpfA93BD13wZEMQdP?si=35116dac512743e7")
 poptophits <- get_playlist_audio_features("", "05nCXZLYE5sgzonkzdNaP4?si=5c2b8c4d7b1c43a2")
 
@@ -125,6 +64,18 @@ tophits <-
   ggplot(aes(x = energy)) +
   geom_histogram(binwidth = 0.1) +
   facet_wrap(~category)
+
+
+```
+
+
+There are three playlists compared. All are from 2022 and have been recently currated. There are four variables shown in this graph from the genres bachata, kizomba and Pop. In the bachata playlist there are 130 songs, in the kizomba 125 songs and in the pop 160 songs. 
+
+In the table here we can see the energy count. As we can see is the energy count in kizomba music very high in 0.65 to 0.75, then follows 0.55 to 0.65. A similar bar is shown in bachata. Energy levels higher then 0.75 are much lower in bachata. The value of 0.75 and higher are more represented in bachata and pop. 
+
+From these graphs we can see that the energy value of kizomba is dominantly between 0.55 and 0.75. In bachata this is between 0.55 and 0.85, and for pop this is between 0.45 and 0.85. So typically, the energy level of kizomba often lies between 0.55 and 0.75, mostly between 0.65 and 0.75.
+
+```{r tophits, echo=FALSE}
 
 
 tophits %>%                    # Start with awards.
@@ -190,14 +141,669 @@ tophits %>%                    # Start with awards.
 
 ```
 
-## Including Plots
+Energy and valence both are presented in a scale from 0 to 1. The number of valence presents the 'hapiness' of the song and is shown in the X-axis, on the y-axis is shown the amount of energy, The colors show is the song is in minor or major. Major is colored lightblue and minor is colored dark blue. The size of the dots represents loudness. 
 
-You can also embed plots, for example:
+### Valence
+We see that in the bachata graph the dots are places a lot to the right, which means overall the value of valence is very high. The valence of the kizomba songs is most placed between 0.3 and 0.7. With pop we see that all values of valence are represented. Close to zero as well as close to one. The Major scale is more used with a lower valence, and minor is more used with a higher valence, which is counter the idea that major songs are happy and minor scales are more sad songs. 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+### Energy
+in the kizomba graph we see that six songs, all in minor are below 0.5 in energy and the rest is above. In the bachata- and pop-playlists there are significantly more songs, especially in pop. As spoken about before most songs are between 0.55 and 0.75, specifically between 0.65 and 0.75. 
+
+### Mode and Loudness
+The modes seem quite evenly divided. although in pop we see that a lot of songs with low energy are in major, where in kizomba that was in minor. The loudness in bachata songs is the highest as there the dors are bigger. In the pop playlist the 
+
+
+
+# Sad Girlz Luv Money Orginal and Kizomba version
+
+Sad Girlz Luv Money has two versions. A pop version and a Kizomba remix with Khali Uchis. 
+
+### sad girlz love money kizomba
+
+```{r sad girlz kizomba chromagram}
+
+sadgirlzkizomba <-
+  get_tidy_audio_analysis("09gysnJpfQ3ublBmJDfcEC?si=5ea5c640ed424139") %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+  
+  
+sadgirlzkizomba %>%
+  mutate(pitches = map(pitches, compmus_normalise, "euclidean")) %>%
+  compmus_gather_chroma() %>% 
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = pitch_class,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  theme_minimal() +
+  scale_fill_viridis_c()
+
+```
+Here we can see the chromagram of the kizomba remix. we see that C#/Db is represented quite dominantly throughout the song. C is represented more just after 50 seconds till 80 seconds and then again at 130 seconds, when C is more dominant we can also see some yellow peaks in F, which suggests a F chords without clear major or minor distinction. A and E have frequent highlights in green. The song ends with C#/Db, E and A in bright green. Together these notes form a A-major chords.
+
+```{r sad girlz original chroma, echo=FALSE}
+
+sadgirlzoriginal <-
+  get_tidy_audio_analysis("2pgDBO0ZAgvye7joSmdDm8?si=2552a28412744719") %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+
+
+sadgirlzoriginal %>%
+  mutate(pitches = map(pitches, compmus_normalise, "euclidean")) %>%
+  compmus_gather_chroma() %>% 
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = pitch_class,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  theme_minimal() +
+  scale_fill_viridis_c()  
+
+
+```
+In the original version we see that C lights up around 45 seconds. In the kizomba version, C goes dark blue and there are two clear highlighted parts. In the original song there is a less clear division. In F there is a similar pattern compared to the kizomba version. In F#/Gb there is a bright yellow part at 155 seconds that is not there in the kizomba version. There is a shorter bright green part at the end t G#/Ab. In the kizomba version there is around ten seconds of this dominantness of three bright green tones and in the original version we see around five seconds in one note. 
+
+
+
+```{r Sad Girlz Luv Money chroma kizomba, echo=FALSE}
+
+  library(compmus)
+  compmus_long_distance(
+  sadgirlzkizomba %>% mutate(pitches = map(pitches, compmus_normalise, "chebyshev")),
+  sadgirlzkizomba %>% mutate(pitches = map(pitches, compmus_normalise, "chebyshev")),
+  feature = pitches,
+  method = "manhattan"
+) %>%
+  ggplot(
+    aes(
+      x = xstart + xduration / 2,
+      width = xduration,
+      y = ystart + yduration / 2,
+      height = yduration,
+      fill = d
+    )
+  ) +
+  geom_tile() +
+  coord_equal() +
+  labs(x = "sadgirlkizomba", y = "sadgirlzkizomba") +
+  theme_minimal() +
+  scale_fill_viridis_c(guide = NULL)
+  
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r Sad Girlz Luv Money original chroma, echo=FALSE}
+
+  library(compmus)
+  compmus_long_distance(
+  sadgirlzoriginal %>% mutate(pitches = map(pitches, compmus_normalise, "chebyshev")),
+  sadgirlzoriginal %>% mutate(pitches = map(pitches, compmus_normalise, "chebyshev")),
+  feature = pitches,
+  method = "manhattan"
+) %>%
+  ggplot(
+    aes(
+      x = xstart + xduration / 2,
+      width = xduration,
+      y = ystart + yduration / 2,
+      height = yduration,
+      fill = d
+    )
+  ) +
+  geom_tile() +
+  coord_equal() +
+  labs(x = "sadgirlzoriginal", y = "sadgirloriginal") +
+  theme_minimal() +
+  scale_fill_viridis_c(guide = NULL)
+  
+```
+
+```{r Sad Girlz Luv Money, echo=FALSE}
+
+  library(compmus)
+  compmus_long_distance(
+  sadgirlzoriginal %>% mutate(pitches = map(pitches, compmus_normalise, "chebyshev")),
+  sadgirlzkizomba %>% mutate(pitches = map(pitches, compmus_normalise, "chebyshev")),
+  feature = pitches,
+  method = "manhattan"
+) %>%
+  ggplot(
+    aes(
+      x = xstart + xduration / 2,
+      width = xduration,
+      y = ystart + yduration / 2,
+      height = yduration,
+      fill = d
+    )
+  ) +
+  geom_tile() +
+  coord_equal() +
+  labs(x = "sadgirlzoriginal", y = "sadgirlzkizomba") +
+  theme_minimal() +
+  scale_fill_viridis_c(guide = NULL)
+  
+```
+
+
+### Sad Girlz Luv Money Orginal and Kizomba version
+
+Sad Girlz Luv Money has two versions. A pop version and a Kizomba remix with Khali Uchis. 
+
+### Ckay timbre
+
+``` {r ckay timbreee, echo=FALSE}
+  get_tidy_audio_analysis("2Xr1dTzJee307rmrkt8c0g?si=4deadbb7d77042fc") %>% # Change URI.
+  compmus_align(bars, segments) %>%                     # Change `bars`
+  select(bars) %>%                                      #   in all three
+  unnest(bars) %>%                                      #   of these lines.
+  mutate(
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  ) %>%
+  mutate(
+    timbre =
+      map(segments,
+        compmus_summarise, timbre,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  )
+  
+  ckay %>%
+  compmus_gather_timbre() %>%
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = basis,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  scale_fill_viridis_c() +                              
+  theme_classic()
+
+```
+
+
+
+```{r ckay self similarity timbre }
+
+  ckay %>%
+  compmus_self_similarity(timbre, "cosine") %>% 
+  ggplot(
+    aes(
+      x = xstart + xduration / 2,
+      width = xduration,
+      y = ystart + yduration / 2,
+      height = yduration,
+      fill = d
+    )
+  ) +
+  geom_tile() +
+  coord_fixed() +
+  scale_fill_viridis_c(guide = "none") +
+  theme_classic() +
+  labs(x = "", y = "")
+  
+  
+```
+
+
+```{r ckay}
+
+  library(tidyverse)
+  library(spotifyr)
+  library(compmus)
+ 
+    
+  
+  circshift <- function(v, n) {
+  if (n == 0) v else c(tail(v, n), head(v, -n))
+}
+
+#      C     C#    D     Eb    E     F     F#    G     Ab    A     Bb    B
+major_chord <-
+  c(   1,    0,    0,    0,    1,    0,    0,    1,    0,    0,    0,    0)
+minor_chord <-
+  c(   1,    0,    0,    1,    0,    0,    0,    1,    0,    0,    0,    0)
+seventh_chord <-
+  c(   1,    0,    0,    0,    1,    0,    0,    1,    0,    0,    1,    0)
+
+major_key <-
+  c(6.35, 2.23, 3.48, 2.33, 4.38, 4.09, 2.52, 5.19, 2.39, 3.66, 2.29, 2.88)
+minor_key <-
+  c(6.33, 2.68, 3.52, 5.38, 2.60, 3.53, 2.54, 4.75, 3.98, 2.69, 3.34, 3.17)
+
+chord_templates <-
+  tribble(
+    ~name, ~template,
+    "Gb:7", circshift(seventh_chord, 6),
+    "Gb:maj", circshift(major_chord, 6),
+    "Bb:min", circshift(minor_chord, 10),
+    "Db:maj", circshift(major_chord, 1),
+    "F:min", circshift(minor_chord, 5),
+    "Ab:7", circshift(seventh_chord, 8),
+    "Ab:maj", circshift(major_chord, 8),
+    "C:min", circshift(minor_chord, 0),
+    "Eb:7", circshift(seventh_chord, 3),
+    "Eb:maj", circshift(major_chord, 3),
+    "G:min", circshift(minor_chord, 7),
+    "Bb:7", circshift(seventh_chord, 10),
+    "Bb:maj", circshift(major_chord, 10),
+    "D:min", circshift(minor_chord, 2),
+    "F:7", circshift(seventh_chord, 5),
+    "F:maj", circshift(major_chord, 5),
+    "A:min", circshift(minor_chord, 9),
+    "C:7", circshift(seventh_chord, 0),
+    "C:maj", circshift(major_chord, 0),
+    "E:min", circshift(minor_chord, 4),
+    "G:7", circshift(seventh_chord, 7),
+    "G:maj", circshift(major_chord, 7),
+    "B:min", circshift(minor_chord, 11),
+    "D:7", circshift(seventh_chord, 2),
+    "D:maj", circshift(major_chord, 2),
+    "F#:min", circshift(minor_chord, 6),
+    "A:7", circshift(seventh_chord, 9),
+    "A:maj", circshift(major_chord, 9),
+    "C#:min", circshift(minor_chord, 1),
+    "E:7", circshift(seventh_chord, 4),
+    "E:maj", circshift(major_chord, 4),
+    "G#:min", circshift(minor_chord, 8),
+    "B:7", circshift(seventh_chord, 11),
+    "B:maj", circshift(major_chord, 11),
+    "D#:min", circshift(minor_chord, 3)
+  )
+
+key_templates <-
+  tribble(
+    ~name, ~template,
+    "Gb:maj", circshift(major_key, 6),
+    "Bb:min", circshift(minor_key, 10),
+    "Db:maj", circshift(major_key, 1),
+    "F:min", circshift(minor_key, 5),
+    "Ab:maj", circshift(major_key, 8),
+    "C:min", circshift(minor_key, 0),
+    "Eb:maj", circshift(major_key, 3),
+    "G:min", circshift(minor_key, 7),
+    "Bb:maj", circshift(major_key, 10),
+    "D:min", circshift(minor_key, 2),
+    "F:maj", circshift(major_key, 5),
+    "A:min", circshift(minor_key, 9),
+    "C:maj", circshift(major_key, 0),
+    "E:min", circshift(minor_key, 4),
+    "G:maj", circshift(major_key, 7),
+    "B:min", circshift(minor_key, 11),
+    "D:maj", circshift(major_key, 2),
+    "F#:min", circshift(minor_key, 6),
+    "A:maj", circshift(major_key, 9),
+    "C#:min", circshift(minor_key, 1),
+    "E:maj", circshift(major_key, 4),
+    "G#:min", circshift(minor_key, 8),
+    "B:maj", circshift(major_key, 11),
+    "D#:min", circshift(minor_key, 3)
+  )
+  
+  ckay  %>%
+  compmus_align(sections, segments) %>%
+  select(sections) %>%
+  unnest(sections) %>%
+  mutate(
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "mean", norm = "manhattan"
+      )
+  )
+
+  kizombatophits %>%
+  mutate(
+    sections =
+      map(
+        sections,                                    # sections or segments
+        summarise_at,
+        vars(tempo, loudness, duration),             # features of interest
+        list(section_mean = mean, section_sd = sd)   # aggregation functions
+      )
+  ) %>%
+  unnest(sections) %>%
+  ggplot(
+    aes(
+      x = tempo,
+      y = tempo_section_sd,
+      colour = genre,
+      alpha = loudness
+    )
+  ) +
+  geom_point(aes(size = duration / 60)) +
+  geom_rug() +
+  theme_minimal() +
+  ylim(0, 5) +
+  labs(
+    x = "Mean Tempo (bpm)",
+    y = "SD Tempo",
+    colour = "Genre",
+    size = "Duration (min)",
+    alpha = "Volume (dBFS)"
+  )
+  
+  tophits %>%
+  mutate(
+    timbre =
+      map(
+        segments,
+        compmus_summarise,
+        timbre,
+        method = "mean"
+      )
+  ) %>%
+  select(genre, timbre) %>%
+  compmus_gather_timbre() %>%
+  ggplot(aes(x = basis, y = value, fill = genre)) +
+  geom_violin() +
+  scale_fill_viridis_d() +
+  labs(x = "Spotify Timbre Coefficients", y = "", fill = "Genre")
+  
+  ckay %>%
+  mutate(loudness_max_time = start + loudness_max_time) %>%
+  arrange(loudness_max_time) %>%
+  mutate(delta_loudness = loudness_max - lag(loudness_max)) %>%
+  ggplot(aes(x = loudness_max_time, y = pmax(0, delta_loudness))) +
+  geom_line() +
+  xlim(0, 30) +
+  theme_minimal() +
+  labs(x = "Time (s)", y = "Novelty")
+  
+  ckay %>%
+  mutate(pitches = map(pitches, compmus_normalise, "clr")) %>%
+  arrange(start) %>%
+  mutate(pitches = map2(pitches, lag(pitches), `-`)) %>%
+  slice(-1) %>% 
+  compmus_gather_chroma() %>% 
+  group_by(start, duration) %>% 
+  summarise(novelty = sum(log1p(pmax(value, 0)))) %>% 
+  ggplot(aes(x = start + duration / 2, y = novelty)) +
+  geom_line() +
+  xlim(0, 30) +
+  theme_minimal() +
+  labs(x = "Time (s)", y = "Novelty")
+  
+ckay %>%
+  arrange(start) %>%
+  mutate(timbre = map2(timbre, lag(timbre), `-`)) %>%
+  slice(-1) %>%
+  compmus_gather_timbre() %>%
+  group_by(start, duration) %>% 
+  summarise(novelty = sum(log1p(pmax(value, 0)))) %>% 
+  ggplot(aes(x = start + duration / 2, y = novelty)) +
+  geom_line() +
+  xlim(0, 30) +
+  theme_minimal() +
+  
+  labs(x = "Time (s)", y = "Novelty")
+  
+  sadgirlzoriginal %>%
+  tempogram(window_size = 8, hop_size = 1, cyclic = FALSE) %>%
+  ggplot(aes(x = time, y = bpm, fill = power)) +
+  geom_raster() +
+  scale_fill_viridis_c(guide = "none") +
+  labs(x = "Time (s)", y = "Tempo (BPM)") +
+  theme_classic()
+  
+  ckay %>%
+  tempogram(window_size = 8, hop_size = 1, cyclic = TRUE) %>%
+  ggplot(aes(x = time, y = bpm, fill = power)) +
+  geom_raster() +
+  scale_fill_viridis_c(guide = "none") +
+  labs(x = "Time (s)", y = "Tempo (BPM)") +
+  theme_classic()
+  
+  library(compmus)
+
+get_conf_mat <- function(fit) {
+  outcome <- .get_tune_outcome_names(fit)
+  fit %>% 
+    collect_predictions() %>% 
+    conf_mat(truth = outcome, estimate = .pred_class)
+}  
+
+get_pr <- function(fit) {
+  fit %>% 
+    conf_mat_resampled() %>% 
+    group_by(Prediction) %>% mutate(precision = Freq / sum(Freq)) %>% 
+    group_by(Truth) %>% mutate(recall = Freq / sum(Freq)) %>% 
+    ungroup() %>% filter(Prediction == Truth) %>% 
+    select(class = Prediction, precision, recall)
+}  
+
+  
+  
+  
+```
+
+
+### CKay timbre 
+
+In this graph we see the magnitude of the effects. c01 to c06 is colored more yellow and green, which means the magnitude is higher. c07 to c12 iw colered bue, which means the magnitude is lower. Just before 50 seconds we see some bright yellow accents, and just before 100 seconds we see those accents again. When c01 is accented with a higher magnitude, the same goes for c03. The magnitude of c05 varies a lot throughout the song, it is not gradient as we see in c01, c02 and c04. It is a clear striped pattern. For this song we can say that timbre features from c01 to c06 are used a lot and c07 to c12 are not used that much. 
+
+
+```{r ckay timbre}
+ckay <- 
+  get_tidy_audio_analysis("2Xr1dTzJee307rmrkt8c0g?si=4deadbb7d77042fc") %>% # Change URI.
+  compmus_align(bars, segments) %>%                     # Change `bars`
+  select(bars) %>%                                      #   in all three
+  unnest(bars) %>%                                      #   of these lines.
+  mutate(
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  ) %>%
+  mutate(
+    timbre =
+      map(segments,
+        compmus_summarise, timbre,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  )
+  
+
+  
+  ckay %>%
+  compmus_gather_timbre() %>%
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = basis,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  scale_fill_viridis_c() +                              
+  theme_classic()
+
+```
+
+### timbre selfsimilarity matrix of pitches CKay 'love nwantiti'
+  
+  In the selfsimilarity matrix of the pitches of 'love nwantiti' we see a checkerboard of nine blocks when counting from leftunder to rightup. From 0 to 28 seconds there is a block with yellow around it. So we can see a change of pitches here. From 28 seconds to 64 seconds we see a block. At 64 seconds we see a light green cross that lasts for 5 seconds, a block of 10 seconds and then another cross that lasts five seconds. Parts were there is a lot of yellow show that there is a lot of difference from that seconds to the song to other parts of the song measured in time. After 90 seconds we see a big block and at 140 we see a lot of yellow again. Here we see that the intro and outro are very different from the rest of the song and in the song there are two moment close together as well that are very different in pitch to the rest of the song. In the next graph we will see the timbre, 
+  
+  
+```{r ckay self similarity}
+
+  library(compmus)
+  compmus_long_distance(
+  ckay %>% mutate(pitches = map(pitches, compmus_normalise, "chebyshev")),
+  ckay %>% mutate(pitches = map(pitches, compmus_normalise, "chebyshev")),
+  feature = pitches,
+  method = "manhattan"
+) %>%
+  ggplot(
+    aes(
+      x = xstart + xduration / 2,
+      width = xduration,
+      y = ystart + yduration / 2,
+      height = yduration,
+      fill = d
+    )
+  ) +
+  geom_tile() +
+  coord_equal() +
+  labs(x = "", y = "") +
+  theme_minimal() +
+  scale_fill_viridis_c(guide = NULL)
+  
+```
+ 
+ ### timbre selfsimilarity matrix of timbre of CKay 'love nwantiti'
+  
+  In the selfsimilarity matrix of the timbre of 'love nwantiti' we see that in the beginning there is more yellow. This means there is irregulairy in the timbre. the checkerboard figure shows how those parts are more similar to itself. Around 130 seconds there is a yellow cross. So in that part around 130 seconds there is a lot of difference with the song part. similarity is here with the beginning of the song.
+   
+```{r timbre self similarity}
+
+  ckay %>%
+  compmus_self_similarity(timbre, "cosine") %>% 
+  ggplot(
+    aes(
+      x = xstart + xduration / 2,
+      width = xduration,
+      y = ystart + yduration / 2,
+      height = yduration,
+      fill = d
+    )
+  ) +
+  geom_tile() +
+  coord_fixed() +
+  scale_fill_viridis_c(guide = "none") +
+  theme_classic() +
+  labs(x = "", y = "")
+
+```
+
+  
+
+```{r dendogram}
+
+  library(compmus)
+
+kizombaklein <- get_playlist_audio_features("", "6NbxVcM6BocFC1ZRimMTNp?si=a06f69418e174ab1")
+
+get_conf_mat <- function(fit) {
+  outcome <- .get_tune_outcome_names(fit)
+  fit %>% 
+    collect_predictions() %>% 
+    conf_mat(truth = outcome, estimate = .pred_class)
+}  
+
+get_pr <- function(fit) {
+  fit %>% 
+    conf_mat_resampled() %>% 
+    group_by(Prediction) %>% mutate(precision = Freq / sum(Freq)) %>% 
+    group_by(Truth) %>% mutate(recall = Freq / sum(Freq)) %>% 
+    ungroup() %>% filter(Prediction == Truth) %>% 
+    select(class = Prediction, precision, recall)
+}  
+
+kizombaklein  %>%
+  add_audio_analysis() %>%
+  mutate(
+    segments = map2(segments, key, compmus_c_transpose),
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "mean", norm = "manhattan"
+      ),
+    timbre =
+      map(
+        segments,
+        compmus_summarise, timbre,
+        method = "mean"
+      )
+  ) %>%
+  mutate(pitches = map(pitches, compmus_normalise, "clr")) %>%
+  mutate_at(vars(pitches, timbre), map, bind_rows) %>%
+  unnest(cols = c(pitches, timbre))
+  
+  kizombaklein <-
+  recipe(
+    track.name ~
+      danceability +
+      energy +
+      loudness +
+      speechiness +
+      acousticness +
+      instrumentalness +
+      liveness +
+      valence +
+      tempo +
+      duration +
+      C + `C#|Db` + D + `D#|Eb` +
+      E + `F` + `F#|Gb` + G +
+      `G#|Ab` + A + `A#|Bb` + B +
+      c01 + c02 + c03 + c04 + c05 + c06 +
+      c07 + c08 + c09 + c10 + c11 + c12,
+    data = kizomb
+  ) %>%
+  step_center(all_predictors()) %>%
+  step_scale(all_predictors()) %>% 
+  # step_range(all_predictors()) %>% 
+  prep(kizombatophits %>% mutate(track.name = str_trunc(track.name, 20))) %>%
+  juice() %>%
+  column_to_rownames("track.name")
+  
+  library(heatmaply)
+  install.packages(heatmaply)
+  install.packages(heatmaply)
+  
+  heatmaply(
+  kizombaklein,
+  hclustfun = hclust,
+  hclust_method = "average",  # Change for single, average, or complete linkage.
+  dist_method = "euclidean"
+)
+
+  heatmaply(
+  kizombaklein,
+  hclustfun = hclust,
+  hclust_method = "average",  # Change for single, average, or complete linkage.
+  dist_method = "euclidean"
+)
+  
+  kizombaklein %>%
+  ggplot(aes(x = c01, y = c02, colour = playlist, size = energy)) +
+  geom_point(alpha = 0.8) +
+  scale_color_viridis_d() +
+  labs(
+    x = "Timbre Component 1",
+    y = "Timbre Component 2",
+    size = "Energy",
+    colour = "Playlist"
+  )
+
+```
+
+
+
+
 
 
