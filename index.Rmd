@@ -6,10 +6,11 @@ output:
     theme: yeti
     orientation: columns
     vertical_layout: fill
-    self_contained: false˚
+    self_contained: false
+    
 
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo=FALSE}
 
 library('ggplot2')
 library('plotly')
@@ -19,6 +20,7 @@ library(spotifyr)
 library(tidyverse)
 library(knitr)
 library(tidyr)
+library(compmus)
 Sys.setenv(SPOTIFY_CLIENT_ID = '9f3fa72cb3d948e496c93a9ea74ff94b')
 Sys.setenv(SPOTIFY_CLIENT_SECRET = 'a7ecccc3b9d846f28d1636eacdbc94e2')
 
@@ -39,15 +41,11 @@ Then we will look at three popular songs in more detail. Two versions of 'Sad Gi
 
 For Sad Girlz Luv Money we will compare the original version and the kizomba version with chromagrams. In a chromagram is visualized what notes are used at what time. Here we can see what notes are used and if there is a difference between the original and the kizomba version. The self similairy matrix with chromafeatures will also give some insight about how consistant or contrastfull the song is. 
 
-With 'love nwantiti' we will look at the self-similarity matrix for chroma features, timbre features
-
-
-
-
+With 'love nwantiti' we will look at the the timbre features which show c01 to c12 and show two self-similarity matrix for chroma features, timbre features to see what timre features are used and how they are used throughout the song. 
 
 ### Differences in Scale, Valence, Energy and Loudness in 2022 tophits lists of Pop, Bachata and Kizomba
 
-```{r = energy count 3 playlists}
+```{r = energy count 3 playlists, echo=FALSE}
 
 kizombatophits <- get_playlist_audio_features("", "0Pk8kSKJ5vO5yIA36kzGMu?si=e846b8a12e834aea")
 bachatatophits <- get_playlist_audio_features("", "3mmU6TpfA93BD13wZEMQdP?si=35116dac512743e7")
@@ -141,17 +139,21 @@ tophits %>%                    # Start with awards.
 
 ```
 
+
+*overall
 Energy and valence both are presented in a scale from 0 to 1. The number of valence presents the 'hapiness' of the song and is shown in the X-axis, on the y-axis is shown the amount of energy, The colors show is the song is in minor or major. Major is colored lightblue and minor is colored dark blue. The size of the dots represents loudness. 
 
-### Valence
+# Valence
 We see that in the bachata graph the dots are places a lot to the right, which means overall the value of valence is very high. The valence of the kizomba songs is most placed between 0.3 and 0.7. With pop we see that all values of valence are represented. Close to zero as well as close to one. The Major scale is more used with a lower valence, and minor is more used with a higher valence, which is counter the idea that major songs are happy and minor scales are more sad songs. 
 
-### Energy
+#Energy
 in the kizomba graph we see that six songs, all in minor are below 0.5 in energy and the rest is above. In the bachata- and pop-playlists there are significantly more songs, especially in pop. As spoken about before most songs are between 0.55 and 0.75, specifically between 0.65 and 0.75. 
 
-### Mode and Loudness
-The modes seem quite evenly divided. although in pop we see that a lot of songs with low energy are in major, where in kizomba that was in minor. The loudness in bachata songs is the highest as there the dors are bigger. In the pop playlist the 
+#Mode 
+The modes seem quite evenly divided. although in pop we see that a lot of songs with low energy are in major, where in kizomba that was in minor. 
 
+#loudness
+The loudness in bachata songs is the highest as there the dots are bigger. Songs with higher value of valence and energy also show more louder songs. In the pop playlist the dots are small and there is not that big of a diffence, waht we can see is that the songs that are louder also are songs higher in energy. 
 
 
 # Sad Girlz Luv Money Orginal and Kizomba version
@@ -246,62 +248,6 @@ In the original version we see that C lights up around 45 seconds. In the kizomb
 ```
 
 
-```{r Sad Girlz Luv Money original chroma, echo=FALSE}
-
-  library(compmus)
-  compmus_long_distance(
-  sadgirlzoriginal %>% mutate(pitches = map(pitches, compmus_normalise, "chebyshev")),
-  sadgirlzoriginal %>% mutate(pitches = map(pitches, compmus_normalise, "chebyshev")),
-  feature = pitches,
-  method = "manhattan"
-) %>%
-  ggplot(
-    aes(
-      x = xstart + xduration / 2,
-      width = xduration,
-      y = ystart + yduration / 2,
-      height = yduration,
-      fill = d
-    )
-  ) +
-  geom_tile() +
-  coord_equal() +
-  labs(x = "sadgirlzoriginal", y = "sadgirloriginal") +
-  theme_minimal() +
-  scale_fill_viridis_c(guide = NULL)
-  
-```
-
-```{r Sad Girlz Luv Money, echo=FALSE}
-
-  library(compmus)
-  compmus_long_distance(
-  sadgirlzoriginal %>% mutate(pitches = map(pitches, compmus_normalise, "chebyshev")),
-  sadgirlzkizomba %>% mutate(pitches = map(pitches, compmus_normalise, "chebyshev")),
-  feature = pitches,
-  method = "manhattan"
-) %>%
-  ggplot(
-    aes(
-      x = xstart + xduration / 2,
-      width = xduration,
-      y = ystart + yduration / 2,
-      height = yduration,
-      fill = d
-    )
-  ) +
-  geom_tile() +
-  coord_equal() +
-  labs(x = "sadgirlzoriginal", y = "sadgirlzkizomba") +
-  theme_minimal() +
-  scale_fill_viridis_c(guide = NULL)
-  
-```
-
-
-### Sad Girlz Luv Money Orginal and Kizomba version
-
-Sad Girlz Luv Money has two versions. A pop version and a Kizomba remix with Khali Uchis. 
 
 ### Ckay timbre
 
@@ -344,7 +290,7 @@ Sad Girlz Luv Money has two versions. A pop version and a Kizomba remix with Kha
 
 
 
-```{r ckay self similarity timbre }
+```{r ckay self similarity timbre, echo=FALSE }
 
   ckay %>%
   compmus_self_similarity(timbre, "cosine") %>% 
@@ -367,7 +313,7 @@ Sad Girlz Luv Money has two versions. A pop version and a Kizomba remix with Kha
 ```
 
 
-```{r ckay}
+```{r ckay iets, echo=FALSE}
 
   library(tidyverse)
   library(spotifyr)
@@ -649,7 +595,7 @@ ckay <-
   In the selfsimilarity matrix of the pitches of 'love nwantiti' we see a checkerboard of nine blocks when counting from leftunder to rightup. From 0 to 28 seconds there is a block with yellow around it. So we can see a change of pitches here. From 28 seconds to 64 seconds we see a block. At 64 seconds we see a light green cross that lasts for 5 seconds, a block of 10 seconds and then another cross that lasts five seconds. Parts were there is a lot of yellow show that there is a lot of difference from that seconds to the song to other parts of the song measured in time. After 90 seconds we see a big block and at 140 we see a lot of yellow again. Here we see that the intro and outro are very different from the rest of the song and in the song there are two moment close together as well that are very different in pitch to the rest of the song. In the next graph we will see the timbre, 
   
   
-```{r ckay self similarity}
+```{r ckay self similarity, echo=FALSE}
 
   library(compmus)
   compmus_long_distance(
@@ -675,11 +621,11 @@ ckay <-
   
 ```
  
- ### timbre selfsimilarity matrix of timbre of CKay 'love nwantiti'
+### timbre selfsimilarity matrix of timbre of CKay 'love nwantiti'
   
   In the selfsimilarity matrix of the timbre of 'love nwantiti' we see that in the beginning there is more yellow. This means there is irregulairy in the timbre. the checkerboard figure shows how those parts are more similar to itself. Around 130 seconds there is a yellow cross. So in that part around 130 seconds there is a lot of difference with the song part. similarity is here with the beginning of the song.
    
-```{r timbre self similarity}
+```{r timbre self similarity, echo=FALSE}
 
   ckay %>%
   compmus_self_similarity(timbre, "cosine") %>% 
@@ -702,7 +648,7 @@ ckay <-
 
   
 
-```{r dendogram}
+```{r dendogram, echo=FALSE}
 
   library(compmus)
 
