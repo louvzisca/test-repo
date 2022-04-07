@@ -45,15 +45,15 @@ Kizomba is the lovechild of semba and (Caribbean) zouk created in angola. The na
 In this project is researched what is specific about kizomba music. We will use three recent made playlists of Kizomba, Bachata and Pop. All have been created and updated in the last two weeks. We will compare and look at the energy-levels, modes, loudness and valence. 
 
 
-Then we will look at four popular songs in more detail. Two versions of 'Sad Girlz Luv Money', the orginal and the kizomba remix version will be compared with each other looking at the chroma features, for ‘love nwantiti’ from CKay there will be light shed on the piches and timre and the registered tempochanges from ‘Sextou’ of No Maka, ILBF and Lacroix.
+Then we will look at four popular songs in more detail. Two versions of 'Sad Girlz Luv Money', the orginal and the remix version will be compared with eachother. There will be looked at the chroma features, for ‘love nwantiti’ from CKay there will be shed a light on the timbre and pitches to close off with registered tempochanges from ‘Sextou’ of No Maka, ILBF and Lacroix.
 
-For Sad Girlz Luv Money we will compare the original version and the kizomba version with chromagrams. In a chromagram is visualized what notes are used at what time. Here we can see what notes are used and if there is a difference between the original and the kizomba version. The self similairy matrix with chromafeatures will also give some insight about how consistant or contrastfull the song is. 
+For Sad Girlz Luv Money we will compare the original version and the remix version with chromagrams. In a chromagram is visualized what notes are used at what time. Here we can see what notes are used and if there is a difference between the original and the remix version. The self-similarity matrix with Chroma features will also give some insight about how consistent or contrast full the song is. 
 
-With 'love nwantiti' we will look at the the timbre features which show c01 to c12 and show two self-similarity matrix for chroma features, timbre features to see what timre features are used and how they are used throughout the song. 
+With 'love nwantiti' we will look at the timbre features which show c01 to c12 and show two self-similarity matrix for chroma features, timbre features to see what timbre features are used and how they are used throughout the song. 
 
-The tempochanges from ‘Sextou’ of No Maka, ILBF and Lacroix. Here we will look at how continuous the tempo is.
+The tempochanges from ‘Sextou’ of No Maka, ILBF and Lacroix. Here we will look at how continuous the tempo is. In Kizomba music there a quite some irregularities while dancing. Accents and pauzes disrupt when dancing keeping the dancers on their toes. So here some non-continuous rhytmn can be expected. 
 
-By doing these analysis information will be derived to get a better understanding of the fairly new genre of Kizomba music and will get a better view of what is typical. 
+By doing these analysis, information will be derived to get a better understanding of the fairly new genre of Kizomba music and will get a better view of what is typical for this genre of music. 
 
 ***
 
@@ -83,7 +83,7 @@ tophits <-
 
 ***
 
-There are three playlists compared. All are from 2022 and have been recently currated. There are four variables shown in this graph from the genres bachata, kizomba and Pop. In the bachata playlist there are 130 songs, in the kizomba 125 songs and in the pop 160 songs. 
+There are three playlists compared. All are from 2022 and have been recently curated. There are four variables shown in this graph from the genre’s bachata, kizomba and Pop. In the bachata playlist there are 130 songs, in the kizomba 125 songs and in the pop 160 songs. 
 
 In the table here we can see the energy count. As we can see is the energy count in kizomba music very high in 0.65 to 0.75, then follows 0.55 to 0.65. A similar bar is shown in bachata. Energy levels higher then 0.75 are much lower in bachata. The value of 0.75 and higher are more represented in bachata and pop. 
 
@@ -159,19 +159,28 @@ tophits %>%                    # Start with awards.
 ***
 
 
-Energy and valence both are presented in a scale from 0 to 1. The number of valence presents the 'hapiness' of the song and is shown in the X-axis, on the y-axis is shown the amount of energy, The colors show is the song is in minor or major. Major is colored lightblue and minor is colored dark blue. The size of the dots represents loudness. 
+Energy and valence both are presented in a scale from 0 to 1. The number of valence presents the 'happiness' of the song and is shown in the X-axis, on the y-axis is shown the amount of energy, The colors show is the song is in minor or major. Major is colored light blue and minor is colored dark blue. The size of the dots represents loudness. 
 
 We see that in the bachata graph the dots are places a lot to the right, which means overall the value of valence is very high. The valence of the kizomba songs is most placed between 0.3 and 0.7. With pop we see that all values of valence are represented. Close to zero as well as close to one. The Major scale is more used with a lower valence, and minor is more used with a higher valence, which is counter the idea that major songs are happy and minor scales are more sad songs. 
 
 
-In the kizomba graph we see that six songs, all in minor are below 0.5 in energy and the rest is above. In the bachata- and pop-playlists there are significantly more songs, especially in pop. As spoken about before most songs are between 0.55 and 0.75, specifically between 0.65 and 0.75. 
+In the kizomba graph we see those six songs, all in minor are below 0.5 in energy and the rest is above. In the bachata- and pop-playlists there are significantly more songs, especially in pop. As spoken about before most songs are between 0.55 and 0.75, specifically between 0.65 and 0.75. 
 
 The modes seem quite evenly divided. although in pop we see that a lot of songs with low energy are in major, where in kizomba that was in minor. 
 
-The loudness in bachata songs is the highest as there the dots are bigger. Songs with higher value of valence and energy also show more louder songs. In the pop playlist the dots are small and there is not that big of a diffence, waht we can see is that the songs that are louder also are songs higher in energy. 
+The loudness in bachata songs is the highest as there the dots are bigger. Songs with higher value of valence and energy also show more louder songs. In the pop playlist the dots are small and there is not that big of a difference, what we can see is that the songs that are louder also are songs higher in energy. 
 
 
-### What are the differences between the orignal version of Sad Girlz Luv Money Orginal and the Kizomba version? (chroma features)
+### Which version is more kizomba; the orginal 'Sad Girlz Luv Money' or the Kali Uchis remix? (chroma features)
+
+The original song 'Sad Girlz Luv Money' is a kizomba song. The remix with Kali Uchis is also a kizomba song. What are kizomba traits and how are they used differently?
+
+Analysis by listening to the songs gives us:
+
+Remix song buildup; It begins with singing and guitar with a lot of effect. At 17 seconds the kizomba beat comes in. at 35 seconds the pre-chorus comes in. At 52 seconds the pre-chorus comes in. at 70 seconds the chorus comes in with an accordion type of instrument. At 79 seconds we hear a guitar strum that is also notable in the beginning. at 87 seconds the chorus is repeated with a different singer without the strong kizomba beat. Amaarae has a strong whisper as a second voice. Then a verse follows, still without the beat. At 104 seconds the kizomba beat comes in. Clear we hear the beat which involves a cowbell.  At 122 seconds the beat is disappears again. At 126 seconds the beat comes in again. This time with high-hat that is joined at 131 by a dominant kick. At 140 seconds the pre-chorus with Amaarae, the original singer comes in, without beat for four seconds. At 144 seconds the beat comes in with kick, high-hat and cowbell. At 156 the pre-chorus continuous. At 157 the chorus comes in without beat. At 161 the beat comes in again. At 174 the pre-chorus comes in. At 178 there is a accent stop of all sounds which is also typical of kizomba. At 192 the singer sings the last words. The reverb continuous with the last note and then two strums of guitar. The song finished at 204 seconds, which has a significantly longer outro then the original version. This version has 12 seconds and the original has four seconds.
+
+The original version also starts with guitar and singing. At 17 seconds the kizomba beat comes in just like at the remix version. At 34 seconds the pre-chorus also comes in. At 52 seconds the chorus comes in with 'I really like to party'. The beat is out for two seconds and then at 54 seconds comes back in. at 69 seconds there comes a verse in where there is no beat. at 73 the beat comes in again. So, we have had two breaks here, one with two seconds and one with four seconds. at 78 seconds a verse comes in. At 86 seconds the beat disappears. At 91 seconds the beat comes in. At 104 seconds the pre-chorus comes in 'get the fuck out of my way'. at 121 the chorus comes in. The cowbells are quite dominant here. At 138 seconds the accordion sound comes in. There is an effect that is not in the remix version. That sounds like a sword slow-motion cutting something, the sound is interpretable as more things. It sounds like a sound made with some type of metal. There is no beat until 141. The reverb of the sword sound, singing and the accordion sound go on until 157. The beat disappears and comes back in at 161. The 157 and 161 are synchronous points with the remix version. The verse continues until 174. There the pre-chorus comes in and the beat stops. At 178 the beat comes in. The verse continues until 192. The singer says 'uhh'. This is stacato where in the remix version the last sung word was legato with a lot of reverb. Then there is a high note which is the last one. The song is done at 196 seconds.
+
 
 ```{r sad girlz kizomba chromagram, echo=FALSE}
 
@@ -202,7 +211,12 @@ sadgirlzkizomba %>%
 
 ***
 
-Here we can see the chromagram of the kizomba remix. we see that C#/Db is represented quite dominantly throughout the song. C is represented at 53 seconds till 81 seconds and then again at 130 seconds, when C is more dominant, we can also see some yellow peaks in F, which suggests a F chords without clear major or minor distinction. A and E have frequent highlights in green. The song ends with C#/Db, E and A in bright green. Together these notes form a A-major chords.
+Here we can see the chromagram of the remix. we see that C#/Db is represented quite dominantly throughout the song. C is represented at 52 seconds till 79 seconds and then again at 131 seconds, when C is more dominant, we can also see some yellow peaks in F, which suggests a F chords without clear major or minor distinction. A and E have frequent highlights in green. The song ends with C#/Db, E and A in bright green. Together these notes form a A-major chords.
+
+ 
+
+
+
 
 ```{r sad girlz original chroma, echo=FALSE}
 
@@ -232,7 +246,7 @@ sadgirlzoriginal %>%
 
 ```
 
-In the original version we see that C lights up at 45 seconds. In the kizomba version, C goes dark blue and there are two clear highlighted parts. In the original song there is a less clear division. In F there is a similar pattern compared to the kizomba version. In F#/Gb there is a bright yellow part at 155 seconds that is not there in the kizomba version. There is a shorter bright green part at the end t G#/Ab. In the kizomba version there is around ten seconds of this dominantness of three bright green tones and in the original version we see around five seconds in one note. 
+In the original version we see that C lights up at 52 seconds. In the remix, C goes dark blue and there are two clear highlighted parts. In the original song there is a less clear division. In F there is a similar pattern compared to the remix version. In F#/Gb there is a bright yellow part at 157 seconds that is not there in the remix version. There is a shorter bright green part at the end t G#/Ab. In the remix version there is around ten seconds of these dominant three bright green tones and in the original version we see around five seconds in one note. The tonal material for both songs in scarce. The key for both songs is C#m. The C is the major 7th of the mode. The chords used are mostly C#m and A.
 
 
 ### Chroma self-similarity matrice "Sad Girlz Luv Money' Kizomba version
@@ -264,7 +278,7 @@ In the original version we see that C lights up at 45 seconds. In the kizomba ve
 ```
 ***
 
-The patterns here in the self-similarity matrix with Chroma features is quite consistent. That is because the beat gives a strong pattern that is different sounding then the melody of the song. So instead of a checkerboard pattern which is seen by the song of CKay, here there is a more subtle pattern with a lot of yellow lines.
+The patterns here in the self-similarity matrix with Chroma features is quite consistent. That is because the beat gives a strong pattern that is different sounding then the melody of the song. So instead of a checkerboard pattern which will later be seen by the song of CKay, here there is a more subtle pattern with a lot of yellow lines.
 
 
 
@@ -410,8 +424,9 @@ From 0 to 6 there is an instrumental intro. The singing comes in with a build-up
 In the intro we see more vertical yellow. This vertical starts at the beginning until 31 seconds. When the chorus with the drop comes, the BPM is steadier and the yellow line from the second tempo octave is brighter. At 45 seconds there is a verse and until 69 seconds when seconds chorus comes in. Between that period, we see the first tempo octave is brighter, and when the chorus starts the second tempo octave lights up. From 76 until 81 the first tempo octave lights up. There is a binding vocal piece between the two drops. Then the yellow line in the second tempo octave is brighter again. At 96 seconds where there is singing without instruments there is no clear vertical line and here is a freer form shown. At 108 the lines are steady again. This time the first and the second tempo octave are bright in color. At the outro more instruments are used in a flowing way to explain the vertical line. 
 
 
-### Conclusions
+### Conclusions and discussions
 
-Kizomba music has a wide spectre of timbre. The strong beat is typical but does not have to be continuous. The energylevel is mostly between 0.65 and 0.75. Both major and minor scales are used a lot. The loudness of the song is moderate and there is mostly no big difference in loudness when comparing one kizomba song to another.
+Kizomba music has a wide spectre of timbre. The strong beat is typical but does not have to be continuous. The energy level is mostly between 0.65 and 0.75. Both major and minor scales are used a lot. The loudness of the song is moderate and there is mostly no big difference in loudness when comparing one kizomba song to another. Seen in both versions of 'Sad Girlz Luv Money' there are many stops that have an accent. It could either be a pause of one second that is seen in the remix version, the two second, as seen in the original and the four second that comes around a lot in both. These two – four second pauses are just for the beat and still accompanied by singing and instruments. Here the dancing is more intimate. The ‘real’  dancing pauses and there is more suave swaying. In ‘Sextou’ the breaks from the beat are even longer. They are there 6 to 7 seconds. At ‘love nwantiti’ these breaks are not used but the drum ruffle accents are typical. They have the same effect as the one second pause from the remix version of ‘Sad Girlz Luv Money.’
   
+To make accurate statements about a music genre, a lot of pieces need to be analyzed and compared. A different question that would target a smaller question such as; 'how would a listener know they are listening to kizomba music' would be very interesting. Because it involves the computer analysis as well as the way that it is humanly perceived. Personally, my knowledge of what kizomba music was what bachata music was came after a few months of weekly classes because my body has a tendancy to do the kizomba steps or the bachata steps, without actual thought. How much sense does the designed music make when listening to the music. 'Does the dancing have anything to do with the music, or is it a 100% made up by humans and socially constucted'. In a following corpus I would like to practice more with danceability features and their accurateness. 
 
