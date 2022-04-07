@@ -37,6 +37,7 @@ knitr::opts_chunk$set(error = TRUE)
 ```
 
 
+
 ### What typifies Kizomba music?
 
 Kizomba is the lovechild of semba and (Caribbean) zouk created in angola. The name is derived  from kizombada which mean bigparty. The music goes back to sometime around the 60s and people used to danced semba to it. The kizomba dance itself came around in the 80s.
@@ -52,9 +53,11 @@ With 'love nwantiti' we will look at the the timbre features which show c01 to c
 
 The tempochanges from ‘Sextou’ of No Maka, ILBF and Lacroix. Here we will look at how continuous the tempo is.
 
+By doing these analysis information will be derived to get a better understanding of the fairly new genre of Kizomba music and will get a better view of what is typical. 
+
 ***
 
- 
+
 ### Differences in Scale, Valence, Energy and Loudness in 2022 tophits lists of Pop, Bachata and Kizomba
 
 ```{r = energy count 3 playlists, echo=FALSE}
@@ -198,7 +201,8 @@ sadgirlzkizomba %>%
 ```
 
 ***
-Here we can see the chromagram of the kizomba remix. we see that C#/Db is represented quite dominantly throughout the song. C is represented more just after 50 seconds till 80 seconds and then again at 130 seconds, when C is more dominant, we can also see some yellow peaks in F, which suggests a F chords without clear major or minor distinction. A and E have frequent highlights in green. The song ends with C#/Db, E and A in bright green. Together these notes form a A-major chords.
+
+Here we can see the chromagram of the kizomba remix. we see that C#/Db is represented quite dominantly throughout the song. C is represented at 53 seconds till 81 seconds and then again at 130 seconds, when C is more dominant, we can also see some yellow peaks in F, which suggests a F chords without clear major or minor distinction. A and E have frequent highlights in green. The song ends with C#/Db, E and A in bright green. Together these notes form a A-major chords.
 
 ```{r sad girlz original chroma, echo=FALSE}
 
@@ -227,6 +231,7 @@ sadgirlzoriginal %>%
 
 
 ```
+
 In the original version we see that C lights up at 45 seconds. In the kizomba version, C goes dark blue and there are two clear highlighted parts. In the original song there is a less clear division. In F there is a similar pattern compared to the kizomba version. In F#/Gb there is a bright yellow part at 155 seconds that is not there in the kizomba version. There is a shorter bright green part at the end t G#/Ab. In the kizomba version there is around ten seconds of this dominantness of three bright green tones and in the original version we see around five seconds in one note. 
 
 
