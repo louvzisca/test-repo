@@ -36,11 +36,12 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(error = TRUE)
 ```
 
+ 
 ### What typifies Kizomba music?
 
-In this research will be given a frame to this new type of music called 'Kizomba'. It was created in the 70s/80s and means 'party' in Angolan. In this project is researched what is specific about kizomba music. We will use three recent made playlists of Kizomba, Bachata and Pop. All have been created and updated in the last two weeks. We will compare and look at the energylevels, modes, loudness and valence. 
+In this research will be given a frame to this new type of music called 'Kizomba'. It was created in the 70s/80s and means 'party' in Angolan. In this project is researched what is specific about kizomba music. We will use three recent made playlists of Kizomba, Bachata and Pop. All have been created and updated in the last two weeks. We will compare and look at the energy-levels, modes, loudness and valence. 
 
-Then we will look at three popular songs in more detail. Two versions of 'Sad Girlz Luv Money', the orginal and the kizomba remix version, and love nwantiti for CKay. 
+Then we will look at four popular songs in more detail. Two versions of 'Sad Girlz Luv Money', the orginal and the kizomba remix version will be compared with each other looking at the chroma features with the use of two chromagrams and a self-similarity matrice with chroma features.   ‘love nwantiti’ for CKay. 
 
 For Sad Girlz Luv Money we will compare the original version and the kizomba version with chromagrams. In a chromagram is visualized what notes are used at what time. Here we can see what notes are used and if there is a difference between the original and the kizomba version. The self similairy matrix with chromafeatures will also give some insight about how consistant or contrastfull the song is. 
 
@@ -48,6 +49,7 @@ With 'love nwantiti' we will look at the the timbre features which show c01 to c
 
 ***
 
+ 
 ### Differences in Scale, Valence, Energy and Loudness in 2022 tophits lists of Pop, Bachata and Kizomba
 
 ```{r = energy count 3 playlists, echo=FALSE}
@@ -146,6 +148,7 @@ tophits %>%                    # Start with awards.
 
 ```
 
+***
 
 
 Energy and valence both are presented in a scale from 0 to 1. The number of valence presents the 'hapiness' of the song and is shown in the X-axis, on the y-axis is shown the amount of energy, The colors show is the song is in minor or major. Major is colored lightblue and minor is colored dark blue. The size of the dots represents loudness. 
@@ -159,13 +162,8 @@ The modes seem quite evenly divided. although in pop we see that a lot of songs 
 
 The loudness in bachata songs is the highest as there the dots are bigger. Songs with higher value of valence and energy also show more louder songs. In the pop playlist the dots are small and there is not that big of a diffence, waht we can see is that the songs that are louder also are songs higher in energy. 
 
-***
 
 ### What are the differences between the orignal version of Sad Girlz Luv Money Orginal and the Kizomba version? (chroma features)
-
-Sad Girlz Luv Money has two versions. A pop version and a Kizomba remix with Khali Uchis. 
-
-### Sad Girlz luv Money kizomba version
 
 ```{r sad girlz kizomba chromagram, echo=FALSE}
 
@@ -193,7 +191,8 @@ sadgirlzkizomba %>%
   scale_fill_viridis_c()
 
 ```
-Here we can see the chromagram of the kizomba remix. we see that C#/Db is represented quite dominantly throughout the song. C is represented more just after 50 seconds till 80 seconds and then again at 130 seconds, when C is more dominant we can also see some yellow peaks in F, which suggests a F chords without clear major or minor distinction. A and E have frequent highlights in green. The song ends with C#/Db, E and A in bright green. Together these notes form a A-major chords.
+***
+Here we can see the chromagram of the kizomba remix. we see that C#/Db is represented quite dominantly throughout the song. C is represented more just after 50 seconds till 80 seconds and then again at 130 seconds, when C is more dominant, we can also see some yellow peaks in F, which suggests a F chords without clear major or minor distinction. A and E have frequent highlights in green. The song ends with C#/Db, E and A in bright green. Together these notes form a A-major chords.
 
 ```{r sad girlz original chroma, echo=FALSE}
 
@@ -251,29 +250,13 @@ In the original version we see that C lights up around 45 seconds. In the kizomb
   scale_fill_viridis_c(guide = NULL)
   
 ```
-
-
-The patterns here in the self similarity matrix with chromafeatures is quite consistent. That is because the beat gives a strong pattern that is differentsounding then the melody of the song. So instead of a checkerboard pattern which is seen by the song of CKay, here there is a more subtle pattern with a lot of yellow lines.
-
 ***
 
-# What is the structure of CKay's 'love nwantiti'? (timbre and chroma)
-
-## Build-up of the song 
-
-From 0 to 9 seconds there is an intro with guitar and wordless singing. At 9 seconds there is a transition with a drum ruffle. He starts singing the first verse. At 20 seconds we have another drum ruffle and a more steady beat comes in. At 31 seconds starts the chorus. At 41 seconds the post chorus starts with backing vocals and autotunish vocal effect. At 1.02 the second chorus starts. At 1.22 the second chorus starts. At 1.32 the second postchorus comes in. At 1.53 the bridge starts. At 2.14 the outro starts.At 2.19 there are some words sung again. 
-
-The structure of the song is:
-000   INTRO - 009 VERSE1 - 031 CHORUS1 - 041 POSTCHORUS1 - 062 VERSE2 - 082 CHORUS2 - 092 POSTCHORUS2 -113 VERSE3 - 134 OUTRO
-
-In this graph we see the magnitude of the effects. c01 to c06 is colored more yellow and green, which means the magnitude is higher. c07 to c12 iw colered bue, which means the magnitude is lower. 
-
-At 42 seconds we see some bright yellow accents, and at 92 seconds we see those accents again. When c01 is accented with a higher magnitude, the same goes for c03. 
-
-The magnitude of c05 varies a lot throughout the song, it is not gradient as we see in c01, c02 and c04. It is a clear striped pattern. For this song we can say that timbre features from c01 to c06 are used a lot and c07 to c12 are not used that much. c05 is used in the beginning and outro. 
+The patterns here in the self-similarity matrix with Chroma features is quite consistent. That is because the beat gives a strong pattern that is different sounding then the melody of the song. So instead of a checkerboard pattern which is seen by the song of CKay, here there is a more subtle pattern with a lot of yellow lines.
 
 
-
+ 
+### What is the structure of CKay's 'love nwantiti'? (timbre and chroma)
 
 
 ```{r ckay timbre, echo=FALSE}
@@ -315,10 +298,20 @@ ckay <-
   theme_classic()
 
 ```
+***
 
+From 0 to 9 seconds there is an intro with guitar and wordless singing. At 9 seconds there is a transition with a drum ruffle. He starts singing the first verse. At 20 seconds we have another drum ruffle and a steadier beat comes in. At 31 seconds starts the chorus. At 41 seconds the post chorus starts with backing vocals and autotune-ish vocal effect. At 62 the second chorus starts. At 82 the second chorus starts. At 92 the second post chorus comes in. At 113 the bridge starts. At 134 the outro starts. At 139 there are some words sung again. 
+
+In this graph we see the magnitude of the effects. c01 to c06 is colored more yellow and green, which means the magnitude is higher. c07 to c12 is colored blue, which means the magnitude is lower. 
+
+At 41 seconds when the post chorus starts, we see some bright yellow accents, and at 92 seconds, where there is another post chorus we see those accents again. 
+
+When c01 is accented with a higher magnitude, the same goes for c03. The magnitude of c05 varies a lot throughout the song, it is not gradient as we see in c01, c02 and c04. It is a clear striped pattern. For this song we can say that timbre features from c01 to c06 are used a lot and c07 to c12 are not used that much. c05 is used in the beginning and outro. 
+
+ 
 ### Self-similarity matrice of Pitches of CKay 'love nwantiti'
   
-  In the selfsimilarity matrix of the pitches of 'love nwantiti' we see a checkerboard of nine blocks when counting from leftunder to rightup. From 0 to 28 seconds there is a block with yellow around it. So we can see a change of pitches here. From 28 seconds to 64 seconds we see a block. At 64 seconds we see a light green cross that lasts for 5 seconds, a block of 10 seconds and then another cross that lasts five seconds. Parts were there is a lot of yellow show that there is a lot of difference from that seconds to the song to other parts of the song measured in time. After 90 seconds we see a big block and at 140 we see a lot of yellow again. Here we see that the intro and outro are very different from the rest of the song and in the song there are two moment close together as well that are very different in pitch to the rest of the song. In the next graph we will see the timbre.
+ In the self-similarity matrix of the pitches of 'love nwantiti' we see a checkerboard of nine blocks when counting from left under to right up. From 0 to 20 seconds there is a block with yellow around it. At 20 seconds there is a drum ruffle So we can see a change of pitches here. From 20 seconds to 62 seconds, we see a block. At 62 seconds we see a light green cross where the second verse starts, that is where the singer sings without a lot of backgroundsupport.  that lasts for 5 seconds, a block of 10 seconds and then another cross that lasts five seconds, there is another drum ruffle. Parts were there is a lot of yellow show that there is a lot of difference from that seconds to the song to other parts of the song measured in time. At 82 seconds we see a big block with the chorus and at 134 we see a lot of yellow again. Here we see that the intro and outro are very different from the rest of the song and in the song. There is guitar, backgroundsinging an no beat. 
   
   
 ```{r ckay self similarity, echo=FALSE}
@@ -347,9 +340,10 @@ ckay <-
   
 ```
  
+ 
 ### Selfsimilarity-matrix of timbre of CKay 'love nwantiti'
   
-  In the selfsimilarity matrix of the timbre of 'love nwantiti' we see that in the beginning there is more yellow. This means there is irregulairy in the timbre. the checkerboard figure shows how those parts are more similar to itself. Around 130 seconds there is a yellow cross. So in that part around 130 seconds there is a lot of difference with the song part. similarity is here with the beginning of the song.
+  In the self similarity matrix of the timbre of 'love nwantiti' we see that in the beginning there is more yellow. This is where the intro is, and at the end where the outro is as well is a part very different from the rest of the song regarding timbre. In this part there is background singing, guitar, and no beat. At 134 seconds where the outro starts is a big difference in timbre again.  
    
 ```{r timbre self similarity, echo=FALSE}
 
@@ -373,9 +367,9 @@ ckay <-
 ```
 
 ***
-In the selfsimilarity matrix of the timbre of 'love nwantiti' we see that in the beginning there is more yellow. This means there is irregulairy in the timbre. the checkerboard figure shows how those parts are more similar to itself. Around 130 seconds there is a yellow cross. So in that part around 130 seconds there is a lot of difference with the song part. similarity is here with the beginning of the song.
    
 
+ 
 ### Tempoconsistancy of 'Sextou' of No Maka, ILBF and Lacroix
 ``` {r tempogram, echo=FALSE}
 sextou <- get_tidy_audio_analysis("0SOPsClC3TtTEmfUjo2nba?si=436b86f549594dbd")
@@ -392,6 +386,16 @@ sextou %>%
 
 ***
 
-In this Fourier-based tempogram Spotfy makes an to analyse the tempo of No Maka’s ‘Sextou’. The tempo is estimated at 144 The lines above and below are called tempo octaves. The spaces inbetween the tempo octaves is where there is a freer form.   
+In this Fourier-based tempogram Spotify makes an to analysis of the tempo of No Maka’s ‘Sextou’. The tempo is estimated at 144. The lines above and below are called tempo octaves. Here we see four lines. The brighter lines are at 298 and 432, which are two and three times the logic BPM. We call the line of 298 the first tempo octave and 432 the second tempo octave. The spaces in-between the tempo octaves are where different elements without strong beat are measured. 
+
+In the beginning the yellow lines go up which means that the BPM is accelerated and at the end the BPM is slowed down as the line goes down. In four places we see more yellow vertically. To make sense of the lines, the song structure when listened to is as following; 
+
+From 0 to 6 there is an instrumental intro. The singing comes in with a build-up starting at 6. At 12 instrumental accents come in. At 19 seconds there is a breakdown without a strong beat and more legato. At 25 a beat comes in building up to the drop that comes at 31 seconds, this is also the chorus. At 45 seconds a verse comes in. At 57 there is a breakdown again. At 64 the beat comes in. at 69 there is a second chorus. From 76 until 81 there is a binding vocal piece in the middle of a double chorus.  At 96 seconds there is singing with almost no instruments, at 102 the beat comes in. at 108 there is a third chorus. At 115 there is a binding vocal piece until 121. At 134 the outro starts where the singer sings the names of the artists.
+
+
+In the intro we see more vertical yellow. This vertical starts at the beginning until 31 seconds. When the chorus with the drop comes, the BPM is steadier and the yellow line from the second tempo octave is brighter. At 45 seconds there is a verse and until 69 seconds when seconds chorus comes in. Between that period, we see the first tempo octave is brighter, and when the chorus starts the second tempo octave lights up. From 76 until 81 the first tempo octave lights up. There is a binding vocal piece between the two drops. Then the yellow line in the second tempo octave is brighter again. At 96 seconds where there is singing without instruments there is no clear vertical line and here is a freer form shown. At 108 the lines are steady again. This time the first and the second tempo octave are bright in color. At the outro more instruments are used in a flowing way to explain the vertical line. 
+
+
+
   
 
